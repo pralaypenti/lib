@@ -36,9 +36,7 @@ class _AditionalOparatorState extends State<AditionalOparator> {
   final value2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AdditionOperation(),
-      child: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           title: Text('Aditional oparator Screen'),
           backgroundColor: Colors.limeAccent,
@@ -98,7 +96,6 @@ class _AditionalOparatorState extends State<AditionalOparator> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
