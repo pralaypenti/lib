@@ -7,21 +7,21 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
-  _State createState() => _State();
+  State createState() => _State();
 }
 
 class _State extends State<MyApp> {
-
-
   double silder = 1;
 
-  void silderValue(double value){
-
+  void silderValue(double value) {
     setState(() {
       silder = value;
     });
   }
+
   int invat = 0;
   void groupValue(int? vales) {
     setState(() {
@@ -63,7 +63,7 @@ class _State extends State<MyApp> {
                     ),
                     title: Text('Option 0'),
                   ),
-                    ListTile(
+                  ListTile(
                     leading: Radio(
                       value: 1,
                       groupValue: invat,
@@ -71,7 +71,7 @@ class _State extends State<MyApp> {
                     ),
                     title: Text('Option 0'),
                   ),
-                    ListTile(
+                  ListTile(
                     leading: Radio(
                       value: 2,
                       groupValue: invat,
@@ -83,7 +83,7 @@ class _State extends State<MyApp> {
               ),
             ),
 
-           Slider(
+            Slider(
               value: silder,
               min: 0,
               max: 100,
@@ -98,7 +98,6 @@ class _State extends State<MyApp> {
     );
   }
 }
-
 
 //checkbox
 //switch
