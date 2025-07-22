@@ -39,18 +39,32 @@ class _DetailsViewScreenState extends State<DetailsViewScreen> {
               return Center(child: Text('No data available.'));
             }
             final detail = snapshot.data!.reversed.first;
-            return Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text('Name'),
-                  SizedBox(width: 20),
-                  Text(detail.name),
-                  Text(detail.age.toString()),
-                  Text(detail.count.toString()),
-                ],
-              ),
+            return ListView(
+              padding: EdgeInsets.all(16),
+              children: [
+                Text(
+                  'Name:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Text(detail.name, style: TextStyle(fontSize: 16)),
+
+                SizedBox(height: 16),
+                Text(
+                  'Age:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Text('${detail.age}', style: TextStyle(fontSize: 16)),
+
+                SizedBox(height: 16),
+                Text(
+                  'Count:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Text('${detail.count}', style: TextStyle(fontSize: 16)),
+              ],
             );
           } else if (snapshot.hasError) {
             return Center(child: Text(snapshot.error.toString()));

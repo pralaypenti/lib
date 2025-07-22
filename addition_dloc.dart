@@ -36,66 +36,65 @@ class _AditionalOparatorState extends State<AditionalOparator> {
   final value2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          title: Text('Aditional oparator Screen'),
-          backgroundColor: Colors.limeAccent,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Aditional oparator Screen'),
+        backgroundColor: Colors.limeAccent,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              controller: value1,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Add Value',
+              ),
+            ),
+            SizedBox(height: 20),
+            TextField(
+              controller: value2,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Add Value',
+              ),
+            ),
+
+            SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                final a = int.tryParse(value1.text) ?? 0;
+                final b = int.tryParse(value2.text) ?? 0;
+                value1.clear();
+                value2.clear();
+                context.read<AdditionOperation>().add(AdditionValue(a, b));
+              },
+              style: ElevatedButton.styleFrom(
+                textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              child: Text(
+                'Add Value',
+                style: TextStyle(color: Colors.pinkAccent),
+              ),
+            ),
+
+            SizedBox(height: 25),
+            BlocBuilder<AdditionOperation, AdditionResult>(
+              builder: (context, state) {
+                return Text(
+                  'Result:${state.result}',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                );
+              },
+            ),
+          ],
         ),
-        body: Padding(
-          padding: EdgeInsets.all(15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              TextField(
-                controller: value1,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Add Value',
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                controller: value2,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Add Value',
-                ),
-              ),
-
-              SizedBox(height: 20),
-
-              ElevatedButton(
-                onPressed: () {
-                  final a = int.tryParse(value1.text) ?? 0;
-                  final b = int.tryParse(value2.text) ?? 0;
-                  context.read<AdditionOperation>().add(AdditionValue(a, b));
-                },
-                style: ElevatedButton.styleFrom(
-                  textStyle: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                child: Text(
-                  'Add Value',
-                  style: TextStyle(color: Colors.pinkAccent),
-                ),
-              ),
-
-              SizedBox(height: 25),
-              BlocBuilder<AdditionOperation, AdditionResult>(
-                builder: (context, state) {
-                  return Text(
-                    'Result:${state.result}',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      );
+      ),
+    );
   }
 }
