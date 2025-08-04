@@ -17,7 +17,7 @@ class PermissionBloc extends Bloc<PermissionEvent, PermissionState> {
           emit(PermissionDenied());
         }
       } else {
-        emit(PermissionDenied()); 
+        emit(PermissionDenied());
       }
     });
   }

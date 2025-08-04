@@ -1,8 +1,12 @@
 import 'package:bloc_stm/Screen/ui.dart';
 import 'package:bloc_stm/addition_dloc.dart';
+import 'package:bloc_stm/animated_login/animated_login.dart';
+import 'package:bloc_stm/animated_login/bloc.dart';
 import 'package:bloc_stm/bloc_view.dart';
 import 'package:bloc_stm/permission_hendler/bloc/bloc_class.dart';
 import 'package:bloc_stm/permission_hendler/ui/permission_handler.dart';
+import 'package:bloc_stm/qr_code/bloc/qr_bloc.dart';
+import 'package:bloc_stm/qr_code/ui/qr_code.dart';
 import 'package:bloc_stm/upi_addtion.dart';
 import 'package:bloc_stm/with_out_save_number_whatsapp/bloc/wsap_bloc.dart';
 import 'package:bloc_stm/with_out_save_number_whatsapp/ui/wsn_whatsapp.dart';
@@ -10,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -131,6 +136,38 @@ class _ButtonViewsState extends State<ButtonViews> {
                 );
               },
               child: const Text('Direct WhatsAppScreen'),
+            ),
+            SizedBox(height: 25),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (context) => BlocProvider(
+                          create: (_) => ScannerBloc(),
+                          child: const QRScannerScreen(),
+                        ),
+                  ),
+                );
+              },
+              child: const Text('QR Code'),
+            ),
+            SizedBox(height: 25),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (context) => BlocProvider(
+                          create: (_) => LoginBloc(),
+                          child:  TeddyLoginScreen(),
+                        ),
+                  ),
+                );
+              },
+              child: const Text('QR Code'),
             ),
           ],
         ),
