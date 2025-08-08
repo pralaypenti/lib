@@ -8,6 +8,7 @@ import 'package:bloc_stm/permission_hendler/ui/permission_handler.dart';
 import 'package:bloc_stm/qr_code/bloc/qr_bloc.dart';
 import 'package:bloc_stm/qr_code/ui/qr_code.dart';
 import 'package:bloc_stm/split/split_app.dart';
+import 'package:bloc_stm/t&c/t&c_screen.dart';
 import 'package:bloc_stm/upi_addtion.dart';
 import 'package:bloc_stm/video_player/video_player.dart';
 import 'package:bloc_stm/with_out_save_number_whatsapp/bloc/wsap_bloc.dart';
@@ -203,7 +204,22 @@ class _ButtonViewsState extends State<ButtonViews> {
                     ),
                   );
                 },
-                child: const Text('split app'),
+                child: const Text('video player'),
+              ),
+               ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => BlocProvider(
+                            create: (_) => TermsBloc(),
+                            child:  TermsScreen(),
+                          ),
+                    ),
+                  );
+                },
+                child: const Text('t&c screen'),
               ),
             ],
           ),
